@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
 namespace MCT.Functions;
 
@@ -9,9 +11,12 @@ public class UploadImage
 {
     private readonly ILogger<UploadImage> _logger;
 
-    public UploadImage(ILogger<UploadImage> logger)
+    private readonly BlobServiceClient _blobServiceClient;
+
+    public UploadImage(ILogger<UploadImage> logger, BlobServiceClient blobServiceClient)
     {
         _logger = logger;
+        _blobServiceClient = blobServiceClient;
     }
 
     [Function("UploadImage")]
