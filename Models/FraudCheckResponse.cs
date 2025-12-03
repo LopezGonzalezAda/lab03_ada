@@ -7,5 +7,9 @@ namespace MCT.Functions.Models
         public string Customer { get; set; }
         public string Country { get; set; }
         public string Reason { get; set; }
+        public override string ToString()
+        {
+            return $"OrderId: {OrderId}, IsFraud: {IsFraud}, Customer: {Customer}, Country: {Country}, Reason: {Reason}";
+        }
     }
 }
