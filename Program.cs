@@ -3,6 +3,7 @@ using Microsoft.Azure.Functions.Worker.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Azure;
 
 var builder = FunctionsApplication.CreateBuilder(args);
 
