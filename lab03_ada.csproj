@@ -18,6 +18,7 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Storage.Blobs" Version="6.7.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.7" />
     <PackageReference Include="Microsoft.Extensions.Azure" Version="1.13.1" />
+    <PackageReference Include="Azure.AI.Vision.ImageAnalysis" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
