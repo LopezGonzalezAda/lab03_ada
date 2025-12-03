@@ -40,4 +40,4 @@
   "instanceId": "000000000000000000000000E42C8C52",
   "source": "runtime",
   "decryptionKeyId": ""
-}{"Timestamp":"2025-12-03T11:34:18.4584739Z","NumberOfCores":20,"FunctionSnapshots":{"SharedBlobQueueListener":{"Concurrency":1}}}{"Timestamp":"2025-12-03T14:16:38.2895498Z","NumberOfCores":20,"FunctionSnapshots":{"SharedBlobQueueListener":{"Concurrency":2}}}
+}{"Timestamp":"2025-12-03T11:34:18.4584739Z","NumberOfCores":20,"FunctionSnapshots":{"SharedBlobQueueListener":{"Concurrency":1}}}{"Timestamp":"2025-12-03T14:16:38.2895498Z","NumberOfCores":20,"FunctionSnapshots":{"SharedBlobQueueListener":{"Concurrency":2}}}{"Timestamp":"2025-12-03T16:12:38.0552802Z","NumberOfCores":20,"FunctionSnapshots":{"SharedBlobQueueListener":{"Concurrency":2},"Host.Functions.CheckOrderFraud":{"Concurrency":1}}}{"Timestamp":"2025-12-03T16:12:48.1015488Z","NumberOfCores":20,"FunctionSnapshots":{"SharedBlobQueueListener":{"Concurrency":2},"Host.Functions.CheckOrderFraud":{"Concurrency":2}}}
