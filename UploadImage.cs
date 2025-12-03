@@ -31,6 +31,8 @@ public class UploadImage
         }
 
         var file = req.Form.Files[0];
+        string mail = req.Form["mail"]; //get email
+        
         string fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
 
         // --- NEW CODE STARTS HERE ---
@@ -45,6 +47,12 @@ public class UploadImage
         var blobClient = containerClient.GetBlobClient(fileName);
 
         // 5. Upload the file
+        IDictionary<string, string> metadata = new Dictionary<string, string>
+        {
+            { "email", mail }
+        };
+
+        // 6. Upload file WITH metadata
         await using (var stream = file.OpenReadStream())
         {
             await blobClient.UploadAsync(stream, new BlobUploadOptions
@@ -52,10 +60,10 @@ public class UploadImage
                 HttpHeaders = new BlobHttpHeaders
                 {
                     ContentType = file.ContentType
-                }
+                },
+                Metadata = metadata // This attaches the email to the file in Azure
             });
         }
-
         // --- NEW CODE ENDS HERE ---
 
         return new OkObjectResult("Image uploaded successfully!");
