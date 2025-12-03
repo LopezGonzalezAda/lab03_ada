@@ -24,18 +24,40 @@ public class UploadImage
     {
         _logger.LogInformation("C# HTTP trigger function processed a request.");
 
-        // Check if the request contains any files
+        // 1. Check for files
         if (req.Form.Files.Count == 0)
         {
             return new BadRequestObjectResult("No files were uploaded.");
         }
-        // Get the file
-        var file = req.Form.Files[0];
 
-        // Generate a unique file name
+        var file = req.Form.Files[0];
         string fileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
 
-        // This is just to test it works for now (we will replace this return later)
-        return new OkObjectResult($"Received file: {file.FileName}");
+        // --- NEW CODE STARTS HERE ---
+
+        // 2. Get a reference to the container
+        var containerClient = _blobServiceClient.GetBlobContainerClient("images");
+
+        // 3. Ensure the container exists
+        await containerClient.CreateIfNotExistsAsync();
+
+        // 4. Get a reference to the blob
+        var blobClient = containerClient.GetBlobClient(fileName);
+
+        // 5. Upload the file
+        await using (var stream = file.OpenReadStream())
+        {
+            await blobClient.UploadAsync(stream, new BlobUploadOptions
+            {
+                HttpHeaders = new BlobHttpHeaders
+                {
+                    ContentType = file.ContentType
+                }
+            });
+        }
+
+        // --- NEW CODE ENDS HERE ---
+
+        return new OkObjectResult("Image uploaded successfully!");
     }
 }
