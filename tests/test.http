@@ -1,0 +1,14 @@
+### Upload Image Test
+POST http://localhost:7071/api/UploadImage
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="mail"
+
+student@howest.be
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="tree.jpeg"
+Content-Type: image/jpeg
+
+< C:\Users\Ada\Downloads\tree.jpeg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
